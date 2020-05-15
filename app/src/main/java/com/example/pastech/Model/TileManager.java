@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.Date;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TileManager extends SQLiteOpenHelper {
 
@@ -42,6 +44,22 @@ public class TileManager extends SQLiteOpenHelper {
         this.getWritableDatabase().execSQL(strSql);
     }
 
+    public ArrayList<Tile> getListOfTiles() {
+        ArrayList<Tile> tileList = new ArrayList<Tile>();
+        String strSql = "select * from T_Tiles order by position asc";
+        Cursor cursor = this.getReadableDatabase().rawQuery(strSql, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            tileList.add(new Tile(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3)));
+            cursor.moveToNext();
+        }
+        return tileList;
+    }
+
+    public void setTile() {
+
+    }
+
     public boolean isEmpty() {
         String strSql = "select * from T_Tiles";
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql, null);
@@ -50,10 +68,5 @@ public class TileManager extends SQLiteOpenHelper {
         } else {
             return false;
         }
-    }
-
-    public void deleteTile() {
-        String strSql = "delete from T_Tiles";
-        this.getWritableDatabase().execSQL(strSql);
     }
 }

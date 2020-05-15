@@ -4,23 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".Controller.MainActivity"
-    android:background="#FFF">
+    android:clickable="true">
 
     <ImageView
-        android:id="@+id/settings_button"
+        android:id="@+id/exit_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/fragment_container"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.99"
-        app:layout_constraintStart_toStartOf="@+id/fragment_container"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.01"
-        app:srcCompat="@drawable/settings_button" />
+        app:srcCompat="@drawable/exit_button" />
 
     <ImageView
-        android:id="@+id/tile_2"
+        android:id="@+id/Logo"
+        android:layout_width="0dp"
+        android:layout_height="246dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/titre_pastech_foreground"
+        android:scaleX="2"
+        android:scaleY="2"/>
+
+    <ImageView
+        android:id="@+id/fragment_tile_2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:contentDescription="TODO"
@@ -30,10 +42,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4"
-        app:srcCompat="@drawable/empty_tile" />
+        app:srcCompat="@drawable/empty_settings_tile" />
 
     <ImageView
-        android:id="@+id/tile_4"
+        android:id="@+id/fragment_tile_4"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,10 +54,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.65"
-        app:srcCompat="@drawable/empty_tile" />
+        app:srcCompat="@drawable/empty_settings_tile" />
 
     <ImageView
-        android:id="@+id/tile_6"
+        android:id="@+id/fragment_tile_6"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,10 +66,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9"
-        app:srcCompat="@drawable/empty_tile" />
+        app:srcCompat="@drawable/empty_settings_tile" />
 
     <ImageView
-        android:id="@+id/tile_1"
+        android:id="@+id/fragment_tile_1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,10 +78,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4"
-        app:srcCompat="@drawable/empty_tile" />
+        app:srcCompat="@drawable/empty_settings_tile" />
 
     <ImageView
-        android:id="@+id/tile_3"
+        android:id="@+id/fragment_tile_3"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,10 +90,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.65"
-        app:srcCompat="@drawable/empty_tile" />
+        app:srcCompat="@drawable/empty_settings_tile" />
 
     <ImageView
-        android:id="@+id/tile_5"
+        android:id="@+id/fragment_tile_5"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -90,31 +102,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9"
-        app:srcCompat="@drawable/empty_tile" />
-
-    <ImageView
-        android:id="@+id/Logo"
-        android:layout_width="0dp"
-        android:layout_height="246dp"
-        android:contentDescription="Logo"
-        android:scaleX="2"
-        android:scaleY="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/titre_pastech_foreground" />
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-    </FrameLayout>
+        app:srcCompat="@drawable/empty_settings_tile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

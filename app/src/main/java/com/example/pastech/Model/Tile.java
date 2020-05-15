@@ -1,12 +1,18 @@
 package com.example.pastech.Model;
 
-public class Tile {
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.telephony.SmsManager;
+
+import com.example.pastech.R;
+
+public class Tile implements Parcelable {
     private int mPosition;
     private String mType;
-    private int mNumber;
+    private String mNumber;
     private String mContent;
 
-    public Tile(int position, String type, int number, String content) {
+    public Tile(int position, String type, String number, String content) {
         this.mPosition = position;
         this.mType = type;
         this.mNumber = number;
@@ -29,11 +35,11 @@ public class Tile {
         mType = type;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return mNumber;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         mNumber = number;
     }
 
@@ -43,5 +49,111 @@ public class Tile {
 
     public void setContent(String content) {
         mContent = content;
+    }
+
+    public Tile(Parcel in) {
+        super();
+        readFromParcel(in);
+    }
+
+    public static final Parcelable.Creator<Tile> CREATOR = new Parcelable.Creator<Tile>() {
+        public Tile createFromParcel(Parcel in) {
+            return new Tile(in);
+        }
+
+        public Tile[] newArray(int size) {
+            return new Tile[size];
+        }
+
+    };
+
+    public void readFromParcel(Parcel in) {
+        mPosition = in.readInt();
+        mType = in.readString();
+        mNumber = in.readString();
+        mContent = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mPosition);
+        dest.writeString(mType);
+        dest.writeString(mNumber);
+        dest.writeString(mContent);
+    }
+
+    public void onClickAction() {
+        switch(mType) {
+            case "message":
+                SmsManager smsManager = SmsManager.getDefault();
+                smsManager.sendTextMessage(mNumber, null, mContent, null, null);
+                break;
+
+            case "phone":
+                // TODO: Update this part
+                break;
+
+            case "bluetooth":
+                // TODO: Update this part
+                break;
+
+            case "sos":
+                // TODO: Update this part
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public int setTileImage() {
+        switch(mType) {
+            case "empty":
+                return R.drawable.empty_tile;
+
+            case "message":
+                return R.drawable.message_tile;
+
+            case "phone":
+                return R.drawable.phone_tile;
+
+            case "bluetooth":
+                return R.drawable.bluetooth_tile;
+
+            case "sos":
+                // TODO: Update this image
+                return R.drawable.logo_pastech_foreground;
+
+            default:
+                return R.drawable.empty_tile;
+        }
+    }
+
+    public int setFragmentTileImage() {
+        switch(mType) {
+            case "empty":
+                return R.drawable.empty_settings_tile;
+
+            case "message":
+                return R.drawable.message_settings_tile;
+
+            case "phone":
+                return R.drawable.phone_settings_tile;
+
+            case "bluetooth":
+                return R.drawable.bluetooth_settings_tile;
+
+            case "sos":
+                // TODO: Update this image
+                return R.drawable.logo_pastech_foreground;
+
+            default:
+                return R.drawable.empty_settings_tile;
+        }
     }
 }
