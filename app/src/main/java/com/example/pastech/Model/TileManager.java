@@ -40,7 +40,7 @@ public class TileManager extends SQLiteOpenHelper {
 
     public void insertTile(Tile tile) {
         String strSql = "insert into T_Tiles (position, type, number, content) values ("
-                + tile.getPosition() + ", '" + tile.getType() + "', " + tile.getNumber() + ", '" + tile.getContent() + "')";
+                + tile.getPosition() + ", '" + tile.getType() + "', '" + tile.getNumber() + "', '" + tile.getContent() + "')";
         this.getWritableDatabase().execSQL(strSql);
     }
 
