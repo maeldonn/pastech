@@ -54,6 +54,7 @@ public class EditFragment extends Fragment {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mTile.setType("message");
                 sendBack(mTile);
             }
         });

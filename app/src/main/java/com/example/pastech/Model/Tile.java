@@ -88,6 +88,7 @@ public class Tile implements Parcelable {
     }
 
     public void onClickAction() {
+        // TODO: Rajouter des toasts
         switch(mType) {
             case "message":
                 SmsManager smsManager = SmsManager.getDefault();
@@ -126,8 +127,7 @@ public class Tile implements Parcelable {
                 return R.drawable.bluetooth_tile;
 
             case "sos":
-                // TODO: Update this image
-                return R.drawable.logo_pastech_foreground;
+                return R.drawable.sos_tile;
 
             default:
                 return R.drawable.empty_tile;
@@ -149,8 +149,7 @@ public class Tile implements Parcelable {
                 return R.drawable.bluetooth_settings_tile;
 
             case "sos":
-                // TODO: Update this image
-                return R.drawable.logo_pastech_foreground;
+                return R.drawable.sos_settings_tile;
 
             default:
                 return R.drawable.empty_settings_tile;

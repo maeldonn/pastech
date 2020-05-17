@@ -1,10 +1,13 @@
 package com.example.pastech.Controller;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
 
     private ArrayList<Tile> mTileList;
     private TileManager mTileManager;
+    private SettingsFragment fragment;
+    private boolean mConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,8 +132,29 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
         }
     }
 
+    public void confirmAction() {
+        mConfirm = false;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirmer ?");
+        builder.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mConfirm = true;
+            }
+        });
+        builder.setNegativeButton("NON", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mConfirm = false;
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
     public void openFragment(ArrayList<Tile> tileList) {
-        SettingsFragment fragment = SettingsFragment.newInstance(tileList);
+        fragment = SettingsFragment.newInstance(tileList);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.addToBackStack(null);
@@ -140,11 +166,13 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
     public void onFragmentInteraction(ArrayList<Tile> sendBackList) {
         mTileList = sendBackList;
         onBackPressed();
+        setTileImages();
     }
 
     @Override
     public void onFragmentInteraction(Tile sendBackTile) {
         mTileList.set(sendBackTile.getPosition()-1, sendBackTile);
         onBackPressed();
+        fragment.setTileImages();
     }
 }
