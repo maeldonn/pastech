@@ -56,8 +56,9 @@ public class TileManager extends SQLiteOpenHelper {
         return tileList;
     }
 
-    public void setTile() {
-
+    public void updateTile(Tile tile) {
+        String strSql = "update T_Tiles set type = '" + tile.getType() + "', number = '" + tile.getNumber() + "', content = '" + tile.getContent() + "' where position = " + tile.getPosition();
+        this.getWritableDatabase().execSQL(strSql);
     }
 
     public boolean isEmpty() {

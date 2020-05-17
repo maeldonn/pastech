@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
             mTileList = mTileManager.getListOfTiles();
         }
         setTileImages();
+        mTileManager.close();
     }
 
     public void setTileImages() {

@@ -32,7 +32,27 @@ public class Tile implements Parcelable {
     }
 
     public void setType(String type) {
-        mType = type;
+        switch(type) {
+            case "Message":
+                mType = "message";
+                break;
+
+            case "Appel":
+                mType = "phone";
+                break;
+
+            case "Bluetooth":
+                mType = "bluetooth";
+                break;
+
+            case "Urgence":
+                mType = "sos";
+                break;
+
+            default:
+                mType= "empty";
+                break;
+        }
     }
 
     public String getNumber() {
@@ -114,9 +134,6 @@ public class Tile implements Parcelable {
 
     public int setTileImage() {
         switch(mType) {
-            case "empty":
-                return R.drawable.empty_tile;
-
             case "message":
                 return R.drawable.message_tile;
 
@@ -136,9 +153,6 @@ public class Tile implements Parcelable {
 
     public int setFragmentTileImage() {
         switch(mType) {
-            case "empty":
-                return R.drawable.empty_settings_tile;
-
             case "message":
                 return R.drawable.message_settings_tile;
 
