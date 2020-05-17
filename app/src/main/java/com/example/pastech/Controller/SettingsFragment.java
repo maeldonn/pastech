@@ -4,10 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.example.pastech.Model.Tile;
@@ -17,13 +20,13 @@ import java.util.ArrayList;
 
 
 public class SettingsFragment extends Fragment {
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String TILE_LIST = "tileList";
 
     private ArrayList<Tile> mTileList;
 
     private OnFragmentInteractionListener mListener;
 
+    private FrameLayout fragmentContainer;
     private ImageView exitButton;
     private ImageView tile1;
     private ImageView tile2;
@@ -57,6 +60,7 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
+        fragmentContainer = (FrameLayout) view.findViewById(R.id.edit_fragment_container);
         exitButton = (ImageView) view.findViewById(R.id.exit_button);
         tile1 = (ImageView) view.findViewById(R.id.fragment_tile_1);
         tile2 = (ImageView) view.findViewById(R.id.fragment_tile_2);
@@ -161,7 +165,11 @@ public class SettingsFragment extends Fragment {
     }
 
     public void openFragment(Tile tile) {
-
+        EditFragment fragment = EditFragment.newInstance(tile);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.addToBackStack(null);
+        transaction.add(R.id.edit_fragment_container, fragment, "EDIT_FRAGMENT").commit();
     }
 
 }

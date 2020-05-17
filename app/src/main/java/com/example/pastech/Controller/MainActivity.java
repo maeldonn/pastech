@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -16,7 +15,7 @@ import com.example.pastech.R;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements SettingsFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements SettingsFragment.OnFragmentInteractionListener, EditFragment.OnFragmentInteractionListener {
 
     private FrameLayout fragmentContainer;
     private ImageView settingsButton;
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
+        fragmentContainer = (FrameLayout) findViewById(R.id.settings_fragment_container);
         settingsButton = (ImageView) findViewById(R.id.settings_button);
         tile1 = (ImageView) findViewById(R.id.tile_1);
         tile2 = (ImageView) findViewById(R.id.tile_2);
@@ -133,13 +132,19 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.addToBackStack(null);
-        transaction.add(R.id.fragment_container, fragment, "SETTINGS_FRAGMENT").commit();
+        transaction.add(R.id.settings_fragment_container, fragment, "SETTINGS_FRAGMENT").commit();
     }
 
 
     @Override
     public void onFragmentInteraction(ArrayList<Tile> sendBackList) {
         mTileList = sendBackList;
+        onBackPressed();
+    }
+
+    @Override
+    public void onFragmentInteraction(Tile sendBackTile) {
+        mTileList.set(sendBackTile.getPosition()-1, sendBackTile);
         onBackPressed();
     }
 }
