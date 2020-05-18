@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
     private TileManager mTileManager;
     private SettingsFragment fragment;
     private boolean mConfirm;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
 
         mTileManager = new TileManager(this);
         mTileList = new ArrayList<>();
+        mContext = getApplicationContext();
 
         init();
 
@@ -63,42 +66,42 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
         tile1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTileList.get(0).onClickAction();
+                mTileList.get(0).onClickAction(mContext);
             }
         });
 
         tile2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTileList.get(1).onClickAction();
+                mTileList.get(1).onClickAction(mContext);
             }
         });
 
         tile3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTileList.get(2).onClickAction();
+                mTileList.get(2).onClickAction(mContext);
             }
         });
 
         tile4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTileList.get(3).onClickAction();
+                mTileList.get(3).onClickAction(mContext);
             }
         });
 
         tile5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTileList.get(4).onClickAction();
+                mTileList.get(4).onClickAction(mContext);
             }
         });
 
-        tile1.setOnClickListener(new View.OnClickListener() {
+        tile6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTileList.get(5).onClickAction();
+                mTileList.get(5).onClickAction(mContext);
             }
         });
     }
