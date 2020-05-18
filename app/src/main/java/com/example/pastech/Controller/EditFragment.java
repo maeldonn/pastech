@@ -73,8 +73,8 @@ public class EditFragment extends Fragment {
         spinnerType = (Spinner) view.findViewById(R.id.spinner_type);
         editTextNumber = (EditText) view.findViewById(R.id.editText_number);
         editTextContent = (EditText) view.findViewById(R.id.editText_content);
-        textViewNumber = (TextView) view.findViewById(R.id.editText_number);
-        textViewContent = (TextView) view.findViewById(R.id.editText_content);
+        textViewNumber = (TextView) view.findViewById(R.id.textview_number);
+        textViewContent = (TextView) view.findViewById(R.id.textview_content);
 
         initFields();
 
@@ -93,6 +93,7 @@ public class EditFragment extends Fragment {
                         editTextNumber.setEnabled(true);
                         textViewNumber.setVisibility(View.VISIBLE);
                         editTextContent.setEnabled(false);
+                        editTextContent.setText("");
                         textViewContent.setVisibility(View.INVISIBLE);
                         break;
 
@@ -100,13 +101,16 @@ public class EditFragment extends Fragment {
                         editTextNumber.setEnabled(true);
                         textViewNumber.setVisibility(View.VISIBLE);
                         editTextContent.setEnabled(false);
+                        editTextContent.setText("");
                         textViewContent.setVisibility(View.INVISIBLE);
                         break;
 
                     default:
                         editTextNumber.setEnabled(false);
+                        editTextNumber.setText("");
                         textViewNumber.setVisibility(View.INVISIBLE);
                         editTextContent.setEnabled(false);
+                        editTextContent.setText("");
                         textViewContent.setVisibility(View.INVISIBLE);
                         break;
                 }

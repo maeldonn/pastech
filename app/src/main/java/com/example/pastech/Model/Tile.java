@@ -23,10 +23,6 @@ public class Tile implements Parcelable {
         return mPosition;
     }
 
-    public void setPosition(int position) {
-        mPosition = position;
-    }
-
     public String getType() {
         return mType;
     }
