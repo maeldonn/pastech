@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context=".Controller.MainActivity"
-    android:clickable="true">
+    android:clickable="true"
+    tools:context=".Controller.MainActivity">
 
 
     <ImageView
@@ -25,12 +25,12 @@
         android:id="@+id/spinner_type"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:entries="@array/spinnerItems"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37"
-        android:entries="@array/spinnerItems"/>
+        app:layout_constraintVertical_bias="0.37" />
 
     <EditText
         android:id="@+id/editText_number"
@@ -62,17 +62,20 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.869"
-        app:srcCompat="@drawable/bouton_ok"
-        tools:layout_editor_absoluteX="134dp" />
+        app:layout_constraintVertical_bias="0.87"
+        app:srcCompat="@drawable/bouton_ok" />
 
     <ImageView
         android:id="@+id/clear_button"
         android:layout_width="100dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ok_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.87"
@@ -84,7 +87,8 @@
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ok_button"
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.87"
         app:srcCompat="@drawable/bouton_retour" />
