@@ -1,10 +1,7 @@
 package com.example.pastech.Model;
 
-import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.telephony.SmsManager;
-import android.widget.Toast;
 
 import com.example.pastech.R;
 
@@ -103,33 +100,6 @@ public class Tile implements Parcelable {
         dest.writeString(mType);
         dest.writeString(mNumber);
         dest.writeString(mContent);
-    }
-
-    public void onClickAction(Context context) {
-        // TODO: Rajouter des toasts
-        switch(mType) {
-            case "message":
-                //SmsManager smsManager = SmsManager.getDefault();
-                //smsManager.sendTextMessage(mNumber, null, mContent, null, null);
-                Toast.makeText(context, "Message envoyé.", Toast.LENGTH_LONG).show();
-                break;
-
-            case "phone":
-                // TODO: Update this part
-                break;
-
-            case "bluetooth":
-                // TODO: Update this part
-                break;
-
-            case "sos":
-                // TODO: Update this part
-                Toast.makeText(context, "Message d'urgence envoyé.", Toast.LENGTH_LONG).show();
-                break;
-
-            default:
-                break;
-        }
     }
 
     public int setTileImage() {

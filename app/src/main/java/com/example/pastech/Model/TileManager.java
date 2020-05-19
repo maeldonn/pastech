@@ -5,9 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class TileManager extends SQLiteOpenHelper {
 
@@ -24,7 +22,7 @@ public class TileManager extends SQLiteOpenHelper {
         String strSql = "create table T_Tiles ("
                 + "   position integer primary key,"
                 + "   type text not null,"
-                + "   number integer not null,"
+                + "   number text not null,"
                 + "   content text not null"
                 + ")";
         db.execSQL(strSql);
