@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
         getFusedLocationProviderClient(MainActivity.this).requestLocationUpdates(mLocationRequest, new LocationCallback() {
                     @Override
                     public void onLocationResult(LocationResult locationResult) {
-                        // do work here
                         mLocation = locationResult.getLastLocation();
                     }
                 },
@@ -183,7 +182,6 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
     }
 
     public void confirmOnClickAction(final Tile tile) {
-        // TODO : Résoudre le bug
         if (!tile.getType().equals("empty")) {
             Log.i("TEST", tile.getType());
             final Dialog confirmDialog = new Dialog(MainActivity.this);
